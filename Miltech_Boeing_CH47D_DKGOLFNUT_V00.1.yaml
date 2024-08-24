@@ -1,0 +1,1452 @@
+# Version 0.1
+
+include:
+  - definitions/modules/Instruments/AS_GNS430.yaml
+  - definitions/modules/Instruments/AS_GNS530.yaml
+  - definitions/modules/Instruments/AS_GTX330.yaml
+  - definitions/modules/Instruments/AS_GNS650.yaml  
+  - definitions/modules/Instruments/AS_KR87.yaml 
+  - definitions/modules/Instruments/AS_KAP140.yaml
+  - definitions/modules/Instruments/PMS50_GNS.yaml
+  - definitions/modules/Instruments/PMS50_GTN.yaml
+  - definitions/modules/Instruments/TDS_GTNXi.yaml
+  - definitions/modules/autopilot.yaml
+  - definitions/modules/controls.yaml
+#  - definitions/modules/deice.yaml
+#  - definitions/modules/engines.yaml
+#  - definitions/modules/fuel.yaml
+  - definitions/modules/general.yaml
+  - definitions/modules/handling.yaml
+#  - definitions/modules/lights.yaml
+  - definitions/modules/navigation.yaml
+#  - definitions/modules/pressurization.yaml
+  - definitions/modules/radios.yaml
+  - definitions/modules/safety.yaml
+  - definitions/modules/trim.yaml
+  
+  
+SHARED:
+
+
+#  - # LVAR's
+#  - #############  CoPILOT PANELS #############
+#  - ## CoPilot  SWITCHES ##
+  - #
+    type: var
+    var_name: L:cgi_2_switch
+  - #
+    type: var
+    var_name: L:vgi_2_switch
+
+#  - ## CHRONOMETER - CoPILOT ##
+  - #
+    type: var
+    var_name: L:chrono2_btn_select
+  - #
+    type: var
+    var_name: L:chrono2_btn_ctrl
+  - #
+    type: var
+    var_name: L:chrono2_knob_dim
+
+#  - ## Atitude Indicator Knobs ##
+  - #
+    type: var
+    var_name: L:adi2_knob_pitch_offset
+  - #
+    type: var
+    var_name: L:adi2_knob_cage
+
+#  - ## HSI Indicator Knobs ##
+  -
+    type: NumIncrement
+    var_name: L:hsi2_knob_hdg
+    var_units: enum
+    var_type: f64    
+    up_event_name: HEADING_BUG_INC
+    down_event_name: NHEADING_BUG_DEC
+    increment_by: 1
+    unreliable: true
+  - #
+    type: var
+    var_name: L:hsi2_hdg_bug
+    unreliable: true
+  - #
+    type: var
+    var_name: L:hsi2_knob_crs
+    unreliable: true
+  - #
+    type: var
+    var_name: L:hsi2_knob
+    unreliable: true
+
+#  - ## HSI MODE SELECTOR PANEL ##
+  - #
+    type: var
+    var_name: L:hsi_mode_vor_l
+  - #
+    type: var
+    var_name: L:hsi_mode_gps_l
+  - #
+    type: var
+    var_name: L:hsi_mode_tacan_l
+  - #
+    type: var
+    var_name: L:hsi_mode_cmd_l
+  - #
+    type: var
+    var_name: L:hsi_mode_adf_l
+
+#  - ## ALTIMETER and RADIO ALT PANEL ##
+  - #
+    type: var
+    var_name: L:altset2_knob
+  - #
+    type: var
+    var_name: L:radalt2_knob_dim
+
+#  - #############  CoPILOT STICK and COLLECTIVE functions #############
+#  - ## FLIGHT STICK - CoPILOT SWITCHES ##
+  - #
+    type: var
+    var_name: L:yoke_l_btn_trigger
+  - #
+    type: var
+    var_name: L:yoke_l_btn_hook
+  - #
+    type: var
+    var_name: L:yoke_l_btn_ctr
+  - #
+    type: var
+    var_name: L:yoke_l_btn_3
+  - #
+    type: var
+    var_name: L:yoke_l_pan_x
+
+#  - ## COLLECTIVE LEVER - CoPILOT SWITCHES ##
+  - #
+    type: var
+    var_name: L:coll_l_btn_trigger
+  - #
+    type: var
+    var_name: L:coll_l_btn_rpm_1
+  - #
+    type: var
+    var_name: L:coll_l_btn_rpm_12
+  - #
+    type: var
+    var_name: L:coll_l_pan_x
+  - #
+    type: var
+    var_name: L:coll_l_btn_slt_fil
+  - #
+    type: var
+    var_name: L:coll_l_btn_dim
+
+
+#  - #############  MICELLANEOUS SWITCHES, TABLET FUNCTIONS, ETC. #############
+#  - ## DOORS & HANDLES ##
+  - #
+    type: var
+    var_name: L:door_hoist
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_side_top
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_side
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_ramp_top
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_ramp
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_rampslide
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_pilot
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_emergency_pilot
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_right_handle
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_copilot
+    unreliable: true
+  - #
+    type: var
+    var_name: L:door_emergency_copilot
+  - #
+    type: var
+    var_name: L:door_left_handle
+
+  - # LOAD INTERNAL ITEMS
+    type: var
+    var_name: L:Chinook_Load
+  - # LOAD EXTERNAL ITEMS
+    type: var
+    var_name: L:Chinook_LoadAttached
+
+#  - ## TABLET MISSION VARIABLES ##
+  - #
+    type: var
+    var_name: L:chinook_mission
+  - #
+    type: var
+    var_name: L:chinook_waterbucketfull
+  - #
+    type: var
+    var_name: L:chinook_drop_water
+
+#  - ## TABLET AIRCRAFT ACCESSORY CONFIG VARIABLES ##
+  - #
+    type: var
+    var_name: L:wheel_chocks
+  - #
+    type: var
+    var_name: L:flir_camera
+  - #
+    type: var
+    var_name: L:pitot_covers
+  - #
+    type: var
+    var_name: L:cargo_seat_fold
+  - #
+    type: var
+    var_name: L:pilothide
+  - #
+    type: var
+    var_name: L:mirror_1
+  - #
+    type: var
+    var_name: L:chaffnflare
+  - #
+    type: var
+    var_name: L:skis
+  - #
+    type: var
+    var_name: L:engine_filters
+  - #
+    type: var
+    var_name: L:hf_antenna
+  - #
+    type: var
+    var_name: L:bottom_antenna
+  - #
+    type: var
+    var_name: L:top_antenna
+
+#  - ## TABLET SYSTEM CONFIG VARIABLES ##
+  - # Mispelled by DEVELOPER
+    type: var
+    var_name: L:gps_aera
+  - #
+    type: var
+    var_name: L:metric_unit
+  - #
+    type: var
+    var_name: L:downwash
+  - #
+    type: var
+    var_name: L:CH47D_InteriorWhineVolume
+  - #
+    type: var
+    var_name: L:CH47D_InteriorBladeVolume
+  - #
+    type: var
+    var_name: L:CH47D_ExteriorBladeVolume
+
+#  - #############  OVERHEAD PANELS - LEFT ROW  #############
+#  - ## EAPS PANEL ##
+  - #
+    type: var
+    var_name: L:eaps_sw_fan_1
+  - #
+    type: var
+    var_name: L:eaps_sw_door_1
+  - #
+    type: var
+    var_name: L:eaps_sw_fan_2
+  - #
+    type: var
+    var_name: L:eaps_sw_door_2
+
+#  - ## EXTERNAL LIGHTING PANEL ##
+  - #
+    type: var
+    var_name: L:light_sw_position
+  - #
+    type: var
+    var_name: L:light_sw_form_nvg
+  - #
+    type: var
+    var_name: L:light_sw_anticol_top
+  - #
+    type: var
+    var_name: L:light_sw_anticol_bottom
+  - #
+    type: var
+    var_name: L:light_knob_form
+    unreliable: true
+
+#  - ## Copilot LIGHTING PANEL ##
+  - #
+    type: var
+    var_name: L:light_knob_copilot_inst
+    unreliable: true
+  - #
+    type: var
+    var_name: L:light_sw_copilot_search
+  - #
+    type: var
+    var_name: L:light_knob_copilot_overhead
+    unreliable: true
+
+#  - ## COMPASS PANEL ##
+  - #
+    type: var
+    var_name: L:compass_sw
+  - #
+    type: var
+    var_name: L:compass_knob
+    unreliable: true
+
+#  - ## TROOP WARNING AND JUMP LITGHTS PANEL ##
+  - #
+    type: var
+    var_name: L:htg_sw_jump
+  - #
+    type: var
+    var_name: L:light_warn_jump_red
+  - #
+    type: var
+    var_name: L:light_warn_jump_green
+  - #
+    type: var
+    var_name: L:htg_sw_alarm
+
+#  - ## HEATING PANEL ##
+  - #
+    type: var
+    var_name: L:htg_knob_cabin_temp
+    unreliable: true
+  - #
+    type: var
+    var_name: L:light_warn_htr_start
+  - #
+    type: var
+    var_name: L:htg_sw_blower
+  - # WIPER SWITCH
+    type: var
+    var_name: L:htg_knob_wiper_mode
+  - # GENERIC EVENTS LVAR
+    type: var
+    var_name: L:EVENTS_ID
+    unreliable: true
+
+#  - ## ELECTRIC BAT & APU PANEL ##
+  - #
+    type: var
+    var_name: L:electric_sw_bat
+  - #
+    type: var
+    var_name: L:electric_sw_apu
+  - #
+    type: var
+    var_name: L:electric_sw_gen1
+  - #
+    type: var
+    var_name: L:electric_sw_gen2
+  - #
+    type: var
+    var_name: L:electric_sw_apu_gen
+
+#  - #############  OVERHEAD PANELS - MIDDLE ROW  #############
+#  - ## CTR LIGHTING PANEL ##
+  - #
+    type: var
+    var_name: L:light_knob_center
+    unreliable: true
+  - #
+    type: var
+    var_name: L:light_knob_stick
+    unreliable: true
+
+#  - ## FUEL CONTROL PANEL ##
+  - #
+    type: var
+    var_name: L:fuel_sw_aux_aft_1
+  - #
+    type: var
+    var_name: L:light_warn_fuel_aux_press_l
+  - #
+    type: var
+    var_name: L:fuel_sw_main_aft_1
+  - #
+    type: var
+    var_name: L:fuel_sw_main_fwd_1
+  - #
+    type: var
+    var_name: L:fuel_sw_aux_fwd_1
+  - #
+    type: var
+    var_name: L:fuel_sw_crossfeed
+  - #
+    type: var
+    var_name: L:fuel_sw_refuel
+  - #
+    type: var
+    var_name: L:fuel_sw_aux_aft_2
+  - #
+    type: var
+    var_name: L:light_warn_fuel_aux_press_r
+  - #
+    type: var
+    var_name: L:fuel_sw_main_aft_2
+  - #
+    type: var
+    var_name: L:fuel_sw_main_fwd_2
+  - #
+    type: var
+    var_name: L:fuel_sw_aux_fwd_2
+
+#  - ## ENGINE CONDTITION LEVERS ##
+  - #
+    type: var
+    var_name: L:eng_lever_1
+  - #
+    type: var
+    var_name: L:eng_lever_2
+
+#  - ## FADEC ENGINE PANEL ##
+  - #
+    type: var
+    var_name: L:fadec_sw_operate_1
+  - #
+    type: var
+    var_name: L:fadec_sw_backup_pwr
+  - #
+    type: var
+    var_name: L:fadec_sw_rpm
+  - #
+    type: var
+    var_name: L:fadec_sw_eng_start
+  - #
+    type: var
+    var_name: L:fadec_sw_overspeed
+  - #
+    type: var
+    var_name: L:fadec_sw_operate_2
+  - #
+    type: var
+    var_name: L:fadec_sw_load_share
+
+#  - #############  OVERHEAD PANELS - RIGHT ROW  #############
+#  - ## INTERNAL LIGHTING PANEL ##
+  - #
+    type: var
+    var_name: L:light_sw_flood_inst
+  - #
+    type: var
+    var_name: L:light_sw_flood_exit
+  - #
+    type: var
+    var_name: L:light_sw_flood_ovhd
+  - #
+    type: var
+    var_name: L:light_sw_flood_dome
+  - #
+    type: var
+    var_name: L:light_knob_flood
+    unreliable: true
+
+#  - ## PILOT LIGHTING PANEL ##
+  - #
+    type: var
+    var_name: L:light_knob_pilot_center
+    unreliable: true
+  - #
+    type: var
+    var_name: L:light_sw_pilot
+  - #
+    type: var
+    var_name: L:light_knob_pilot
+    unreliable: true
+
+#  - ## ANTI-ICE PANEL ##
+  - #
+    type: var
+    var_name: L:antiice_sw_windshield_copilot
+  - #
+    type: var
+    var_name: L:antiice_sw_windshield_ctr
+  - #
+    type: var
+    var_name: L:antiice_sw_windshield_pilot
+  - #
+    type: var
+    var_name: L:antiice_sw_windshield_pitot
+
+#  - ## HOIST PANEL ##
+  - #
+    type: var
+    var_name: L:hoist_sw_guard
+  - #
+    type: var
+    var_name: L:hoist_cable_cut
+  - #
+    type: var
+    var_name: L:hoist_knob_control
+    unreliable: true
+  - #
+    type: var
+    var_name: L:hoist_sw_master
+
+#  - ## CARGO HOOK PANEL ##
+  - #
+    type: var
+    var_name: L:hook_sw_master
+  - #
+    type: var
+    var_name: L:light_warn_hookloaded
+  - #
+    type: var
+    var_name: L:light_warn_hookarm
+  - #
+    type: var
+    var_name: L:hook_knob_mode
+  - #
+    type: var
+    var_name: L:hook_sw_guard
+  - #
+    type: var
+    var_name: L:hook_sw_emerg
+
+#  - ## HYDRAULICS PANEL ##
+  - #
+    type: var
+    var_name: L:hyd_sw_xfer_1
+  - #
+    type: var
+    var_name: L:hyd_sw_xfer_2
+  - #
+    type: var
+    var_name: L:hyd_sw_pwr_steer_guard
+  - #
+    type: var
+    var_name: L:hyd_sw_pwr_steer
+  - #
+    type: var
+    var_name: L:hyd_sw_ramp_pwr
+  - #
+    type: var
+    var_name: L:hyd_sw_ramp_emerg_guard
+  - #
+    type: var
+    var_name: L:hyd_sw_ramp_emerg
+  - #
+    type: var
+    var_name: L:hyd_sw_flt_ctrl
+
+#  - #############  PEDISTAL - LOWER LEFT #############
+#  - ### ELECTRONIC COUNTER MEASURES SWITCHES ##
+  - #
+    type: var
+    var_name: L:ecm_sw_power
+  - #
+    type: var
+    var_name: L:ecm_btn_standby
+  - #
+    type: var
+    var_name: L:ecm_btn_warmup
+  - #
+    type: var
+    var_name: L:ecm_sw_guard
+  - #
+    type: var
+    var_name: L:ecm_sw_flare
+
+#  - ### HIGH FREQUENCY (HF) Transmitter SWITCHES ##
+  - #
+    type: var
+    var_name: L:hf_btn_cursor_up
+  - #
+    type: var
+    var_name: L:hf_btn_cursor_left
+  - #
+    type: var
+    var_name: L:hf_btn_cursor_right
+  - #
+    type: var
+    var_name: L:hf_btn_cursor_dn
+  - #
+    type: var
+    var_name: L:hf_btn_value_left
+  - #
+    type: var
+    var_name: L:hf_btn_value_right
+  - #
+    type: var
+    var_name: L:hf_knob_mode_1
+  - #
+    type: var
+    var_name: L:hf_knob_mode_2
+  - #
+    type: var
+    var_name: L:hf_knob_mode_3
+  - #
+    type: var
+    var_name: L:hf_knob_vol
+    unreliable: true
+  - #
+    type: var
+    var_name: L:hf_btn_sol_left
+  - #
+    type: var
+    var_name: L:hf_btn_sol_right
+  - #
+    type: var
+    var_name: L:hf_btn_screen_1
+  - #
+    type: var
+    var_name: L:hf_btn_screen_2
+  - #
+    type: var
+    var_name: L:hf_btn_screen_3
+  - #
+    type: var
+    var_name: L:hf_btn_dim_up
+  - #
+    type: var
+    var_name: L:hf_btn_dim_dn
+
+#  - ### Z-AVH (COMSEC) PANEL ##
+  - #
+    type: var
+    var_name: L:comsec_knob_mode
+  - #
+    type: var
+    var_name: L:comsec_btn_init
+  - #
+    type: var
+    var_name: L:comsec_btn_right
+  - #
+    type: var
+    var_name: L:comsec_btn_left
+  - #
+    type: var
+    var_name: L:comsec_knob_1
+  - #
+    type: var
+    var_name: L:comsec_knob_2
+  - #
+    type: var
+    var_name: L:comsec_knob_preset
+
+#  - ### COMM 1 RADIO PANEL ##
+  - #
+    type: var
+    var_name: L:comm2_sw_1
+  - #
+    type: var
+    var_name: L:comm2_sw_2
+  - #
+    type: var
+    var_name: L:comm2_sw_3
+  - #
+    type: var
+    var_name: L:comm2_sw_4
+  - #
+    type: var
+    var_name: L:comm2_sw_5
+  - #
+    type: var
+    var_name: L:comm2_sw_aux
+  - #
+    type: var
+    var_name: L:comm2_sw_nav
+  - #
+    type: var
+    var_name: L:comm2_knob_volume
+    unreliable: true
+  - #
+    type: var
+    var_name: L:comm2_knob_mode
+  - #
+    type: var
+    var_name: L:comm2_sw_hot_mike
+
+#  - ### COLLINS VHF 1 COMM RADIO PANEL ##
+  - #
+    type: var
+    var_name: L:vhf1_knob_1
+  - #
+    type: var
+    var_name: L:vhf1_drum_1
+  - #
+    type: var
+    var_name: L:hf1_knob_2
+  - #
+    type: var
+    var_name: L:vhf1_drum_2
+  - #
+    type: var
+    var_name: L:hf1_knob_3
+  - #
+    type: var
+    var_name: L:vhf1_drum_3
+  - #
+    type: var
+    var_name: L:hf1_knob_4
+  - #
+    type: var
+    var_name: L:vhf1_drum_4
+  - #
+    type: var
+    var_name: L:vhf1_knob_mode
+  - #
+    type: var
+    var_name: L:vhf1_knob_set
+  - #
+    type: var
+    var_name: L:vhf1_knob_vol
+    unreliable: true
+  - #
+    type: var
+    var_name: L:vhf1_btn_tone
+  - #
+    type: var
+    var_name: L:vhf1_knob_chan
+
+#  - ## STEERING CONTROL SWITCHES ## 
+  - #
+    type: var
+    var_name: L:steer_sw_lock
+  - #
+    type: var
+    var_name: L:steering_knob_big 
+
+#  - #############  PEDISTAL - LOWER RIGHT #############
+#  - ## NAV 1 RADIO SWITCHES ##
+  - #
+    type: var
+    var_name: L:flare_sw_power
+  - #
+    type: var
+    var_name: L:flare_sw_test
+  - #
+    type: var
+    var_name: L:flare_sw_mode
+  - #
+    type: var
+    var_name: L:flare_knob_volume
+    unreliable: true
+
+#  - ## TACAN PANEL KNOBS ## 
+  - #
+    type: var
+    var_name: L:tacan_knob_1
+  - #
+    type: var
+    var_name: L:tacan_knob_2
+  - #
+    type: var
+    var_name: L:tacan_knob_3
+  - #
+    type: var
+    var_name: L:tacan_knob_vol
+    unreliable: true
+  - #
+    type: var
+    var_name: L:tacan_knob_sel
+
+#  - ## UHF RADIO PANEL ## 
+  - #
+    type: var
+    var_name: L:uhf_knob_channel
+  - #
+    type: var
+    var_name: L:uhf_knob_1
+  - #
+    type: var
+    var_name: L:uhf_knob_2
+  - #
+    type: var
+    var_name: L:uhf_knob_3
+  - #
+    type: var
+    var_name: L:uhf_knob_4
+  - #
+    type: var
+    var_name: L:uhf_knob_5
+  - #
+    type: var
+    var_name: L:uhf_knob_mode
+  - #
+    type: var
+    var_name: L:uhf_btn_tone
+  - #
+    type: var
+    var_name: L:uhf_knob_volume
+    unreliable: true
+  - #
+    type: var
+    var_name: L:uhf_sw_squeltch
+  - #
+    type: var
+    var_name: L:uhf_knob_preset
+
+#  - ## COMM 1 RADIO PANEL ## 
+  - #
+    type: var
+    var_name: L:comm1_sw_1
+  - #
+    type: var
+    var_name: L:comm1_sw_2
+  - #
+    type: var
+    var_name: L:comm1_sw_3
+  - #
+    type: var
+    var_name: L:comm1_sw_4
+  - #
+    type: var
+    var_name: L:comm1_sw_5
+  - #
+    type: var
+    var_name: L:comm1_sw_aux
+  - #
+    type: var
+    var_name: L:comm1_sw_nav
+  - #
+    type: var
+    var_name: L:comm1_knob_volume
+    unreliable: true
+  - #
+    type: var
+    var_name: L:comm1_knob_mode
+  - #
+    type: var
+    var_name: L:comm1_sw_hot_mike
+
+#  - ## COLLINS VHF2 RADIO SWITCHES ##
+  - #
+    type: var
+    var_name: L:vhf2_knob_power
+  - #
+    type: var
+    var_name: L:vhf2_knob_preset
+  - #
+    type: var
+    var_name: L:vhf2_knob_function
+  - #
+    type: var
+    var_name: L:vhf2_knob_volume
+    unreliable: true
+  - #
+    type: var
+    var_name: L:vhf2_knob_mode
+  - #
+    type: var
+    var_name: L:vhf2_btn_1
+  - #
+    type: var
+    var_name: L:vhf2_btn_2
+  - #
+    type: var
+    var_name: L:vhf2_btn_3
+  - #
+    type: var
+    var_name: L:vhf2_btn_4
+  - #
+    type: var
+    var_name: L:vhf2_btn_5
+  - #
+    type: var
+    var_name: L:vhf2_btn_6
+  - #
+    type: var
+    var_name: L:vhf2_btn_7
+  - #
+    type: var
+    var_name: L:vhf2_btn_8
+  - #
+    type: var
+    var_name: L:vhf2_btn_9
+  - #
+    type: var
+    var_name: L:vhf2_btn_clear
+  - #
+    type: var
+    var_name: L:vhf2_btn_0
+  - #
+    type: var
+    var_name: L:vhf2_btn_enter
+  - #
+    type: var
+    var_name: L:vhf2_btn_freq
+  - #
+    type: var
+    var_name: L:vhf2_btn_offset
+  - #
+    type: var
+    var_name: L:vhf2_btn_time
+
+#  - ## COMSEC 2 (KY BB RCU) PANEL ##
+  - #
+    type: var
+    var_name: L:comsec2_guard
+  - #
+    type: var
+    var_name: L:comsec2_sw_small
+  - #
+    type: var
+    var_name: L:comsec2_sw_delay
+  - #
+    type: var
+    var_name: L:comsec2_btn_1
+  - #
+    type: var
+    var_name: L:comsec2_btn_2
+  - #
+    type: var
+    var_name: L:comsec2_btn_3
+  - #
+    type: var
+    var_name: L:comsec2_btn_4
+  - #
+    type: var
+    var_name: L:comsec2_btn_5
+  - #
+    type: var
+    var_name: L:comsec2_btn_6
+  - #
+    type: var
+    var_name: L:comsec2_knob_crad
+  - #
+    type: var
+    var_name: L:comsec2_knob_fill
+  - #
+    type: var
+    var_name: L:comsec2_knob_mode
+  - #
+    type: var
+    var_name: L:comsec2_sw_power
+
+#  - ## COMM 3 RADIO PANEL ##
+  - #
+    type: var
+    var_name: L:comm3_sw_1
+  - #
+    type: var
+    var_name: L:comm3_sw_2
+  - #
+    type: var
+    var_name: L:comm3_sw_3
+  - #
+    type: var
+    var_name: L:comm3_sw_4
+  - #
+    type: var
+    var_name: L:comm3_sw_5
+  - #
+    type: var
+    var_name: L:comm3_sw_aux
+  - #
+    type: var
+    var_name: L:comm3_sw_nav
+  - #
+    type: var
+    var_name: L:comm3_knob_volume
+  - #
+    type: var
+    var_name: L:comm3_knob_mode
+    unreliable: true
+  - #
+    type: var
+    var_name: L:comm3_sw_hot_mike
+
+#  - #############  PEDISTAL - UPPER LEFT #############
+#  - ## NAV 1 RADIO SWITCHES ##
+  -
+    type: NumIncrement
+    var_name: L:nav_knob_vol
+    var_units: enum
+    var_type: f64    
+    up_event_name: NAV1_VOLUME_INC
+    down_event_name: NAV1_VOLUME_DEC
+    increment_by: 1
+    unreliable: true
+  - #
+    type: var
+    var_name: L:nav_sw_test
+  -
+    type: NumIncrement
+    var_name: L:nav_knob_mega
+    var_units: enum
+    var_type: f64    
+    up_event_name: NAV1_RADIO_WHOLE_INC
+    down_event_name: NAV1_RADIO_WHOLE_DEC
+    increment_by: 1
+    unreliable: true
+  -
+    type: NumIncrement
+    var_name: L:nav_knob_kilo
+    var_units: enum
+    var_type: f64    
+    up_event_name: NAV1_RADIO_FRACT_INC
+    down_event_name: NAV1_RADIO_FRACT_DEC
+    increment_by: 1
+    unreliable: true
+  - #
+    type: var
+    var_name: L:nav_knob_mb_vol
+    unreliable: true
+  - #
+    type: var
+    var_name: L:nav_sw_mb_sens
+
+#  - ## TRANSPONDER SWITCHES & KNOBS ##
+  - #
+    type: var
+    var_name: L:xpndr_btn_fault
+  - #
+    type: var
+    var_name: L:xpndr_knob_code_mode
+  - #
+    type: var
+    var_name: L:xpndr_btn_rrt
+  - #
+    type: var
+    var_name: L:xpndr_knob_mode
+  - #
+    type: var
+    var_name: L:xpndr_btn_1
+  - #
+    type: var
+    var_name: L:xpndr_btn_2
+  - #
+    type: var
+    var_name: L:xpndr_btn_3
+  - #
+    type: var
+    var_name: L:xpndr_btn_4
+  - #
+    type: var
+    var_name: L:xpndr_btn_5
+  - #
+    type: var
+    var_name: L:xpndr_btn_6
+  - #
+    type: var
+    var_name: L:xpndr_btn_7
+  - #
+    type: var
+    var_name: L:xpndr_btn_8
+  - #
+    type: var
+    var_name: L:xpndr_btn_9
+  - #
+    type: var
+    var_name: L:xpndr_btn_arrow_left
+  - #
+    type: var
+    var_name: L:xpndr_btn_0
+  - #
+    type: var
+    var_name: L:xpndr_btn_arrow_right
+  - #
+    type: var
+    var_name: L:xpndr_btn_bit
+  - #
+    type: var
+    var_name: L:xpndr_btn_arrow_up
+  - #
+    type: var
+    var_name: L:xpndr_btn_arrow_dn
+  - #
+    type: var
+    var_name: L:xpndr_btn_enter
+  - #
+    type: var
+    var_name: L:xpndr_btn_ident
+
+
+#  - #############  PEDISTAL - UPPER MIDDLE #############
+#  - ## LIGHTING SWITCHES ##
+  - #
+    type: var
+    var_name: L:#ANIM_NAME#
+  - #
+    type: var
+    var_name: L:ANIM_NAME
+  - #
+    type: var
+    var_name: L:rx_sw_comm_2
+  - #
+    type: var
+    var_name: L:rx_sw_marker
+  - #
+    type: var
+    var_name: L:rx_sw_fm_1
+  - #
+    type: var
+    var_name: L:rx_sw_fm_2
+  - #
+    type: var
+    var_name: L:rx_knob_vol_part
+  - #
+    type: var
+    var_name: L:rx_sw_pilot_norm_emer
+  - #
+    type: var
+    var_name: L:rx_sw_nav
+  - #
+    type: var
+    var_name: L:rx_sw_dme
+  - #
+    type: var
+    var_name: L:rx_sw_adf
+  - #
+    type: var
+    var_name: L:rx_knob_vol_master
+  - #
+    type: var
+    var_name: L:rx_sw_ics_vox
+  - #
+    type: var
+    var_name: L:rx_sw_tape
+  - #
+    type: var
+    var_name: L:rx_knob_ics_vol
+
+#  - #############  PEDISTAL - UPPER RIGHT #############
+#  - ## AFCS SYSTEMS PANEL ##
+  - #
+    type: var
+    var_name: L:afcs_btn_hdg
+  - #
+    type: var
+    var_name: L:afcs_btn_baro_alt
+  - #
+    type: var
+    var_name: L:afcs_btn_radio_alt
+  - #
+    type: var
+    var_name: L:afcs_sw_cyclic_trim_fwd
+  - #
+    type: var
+    var_name: L:afcs_sw_cyclic_trim_aft
+  - #
+    type: var
+    var_name: L:afcs_sw_cyclic_trim_auto
+  - #
+    type: var
+    var_name: L:afcs_knob_system_sel
+
+#  - ## AIR CONTROLS PANEL ##
+  - #
+    type: var
+    var_name: L:lever_cabin_defog
+  - #
+    type: var
+    var_name: L:lever_cabin_air
+
+#  - ## ADF RECEIVER PANEL ##
+  - #
+    type: var
+    var_name: L:adf_knob_tune
+  -
+    type: NumIncrement
+    var_name: L:adf_knob_khz
+    var_units: enum
+    var_type: f64    
+    up_event_name: ADF_100_INC
+    down_event_name: ADF_100_DEC
+    increment_by: 1
+    unreliable: true
+  - #
+    type: var
+    var_name: L:adf_knob_hz
+  - #
+    type: var
+    var_name: L:adf_sw_cw
+  - #
+    type: var
+    var_name: L:adf_btn_audio
+  - #
+    type: var
+    var_name: L:adf_knob_mode
+  - #
+    type: var
+    var_name: L:adf_knob_loop
+
+#  - #############  PILOT PANELS - FRONT #############
+#  - ## Front Panel SWITCHES ##
+  - #
+    type: var
+    var_name: L:parkingbrake_position
+  - #
+    type: var
+    var_name: L:cgi_fwd_switch
+  - #
+    type: var
+    var_name: L:vgi_1_switch
+
+#  - ## CHRONOMETER - PILOT ##
+  - #
+    type: var
+    var_name: L:chrono1_btn_select
+  - #
+    type: var
+    var_name: L:chrono1_btn_ctrl
+  - #
+    type: var
+    var_name: L:chrono_knob_dim
+    
+#  - ## ATITUDE INIDICATOR ##
+  - #
+    type: var
+    var_name: L:adi1_knob_pitch_offset
+  - #
+    type: var
+    var_name: L:adi1_knob_cage
+
+#  - ## HSI 1 INDICTOR ##
+  -
+    type: NumIncrement
+    var_name: L:hsi1_knob_hdg
+    var_units: enum
+    var_type: f64    
+    up_event_name: HEADING_BUG_INC
+    down_event_name: HEADING_BUG_DEC
+    increment_by: 1
+    unreliable: true
+  - #
+    type: var
+    var_name: L:hsi1_knob_hdg
+    unreliable: true
+  - #
+    type: var
+    var_name: L:hsi1_hdg_bug
+    unreliable: true
+  - # COURSE INDICATOR
+    type: var
+    var_name: L:hsi1_knob_crs
+    unreliable: true
+  - #
+    type: var
+    var_name: L:hsi1_knob
+    unreliable: true
+    
+#  - ## HSI MODE SELECT PANEL ##
+  - #
+    type: var
+    var_name: L:hsi1_mode_vor_r
+  - #
+    type: var
+    var_name: L:hsi1_mode_gps_r
+  - #
+    type: var
+    var_name: L:hsi1_mode_tacan_r
+  - #
+    type: var
+    var_name: L:hsi1_mode_cmd_r
+  - #
+    type: var
+    var_name: L:hsi1_mode_adf_r
+    
+#  - ## BEACON MARKER LIGHTS ##
+  - #
+    type: var
+    var_name: L:marker_beacon_o
+  - #
+    type: var
+    var_name: L:marker_beacon_m
+  - #
+    type: var
+    var_name: L:marker_beacon_i
+    
+#  - ## ALTIMETER AND RADIO ALT DIMMER ##
+  - #
+    type: var
+    var_name: L:altset1_knob
+  - #
+    type: var
+    var_name: L:radlat_knob_dim
+    
+#  - ## IPAD FUNCTIONS ##
+  - #
+    type: var
+    var_name: L:ipad_button
+  - #
+    type: var
+    var_name: L:ipad_hide
+  - #
+    type: var
+    var_name: L:ipad_hidden
+#  - #############  PILOT PANELS - MIDDLE  #############
+#  - ## FIRE SYSTEM PANEL SWITCHES ##
+  - # Mispelled by DEVELOPER
+    type: var
+    var_name: L:fire_switch_discarge
+  - #
+    type: var
+    var_name: L:fire_switch_detr
+  - #
+    type: var
+    var_name: L:fire_switch_pull_1
+  - #
+    type: var
+    var_name: L:fire_switch_pull_2
+
+#  - ## TRANSMISSION SWITCHES ##
+  - #
+    type: var
+    var_name: L:xmsn_knob_oil_press
+  - #
+    type: var
+    var_name: L:xmsn_knob_oil_temp
+  - # FUEL TANK SELECTOR
+    type: var
+    var_name: L:knob_fueltank_selector
+  - # CAUTION LIGHTS TEST PANEL
+    type: var
+    var_name: L:switch_caution_lt_dim
+  - #
+    type: var
+    var_name: L:switch_caution_lt_test
+  - # VHF ANTENNA RELAY
+    type: var
+    var_name: L:switch_vhf_ant_relay
+
+#  - #############  PILOT STICK and COLLECTIVE functions #############
+#  - ## FLIGHT STICK - PILOT SWITCHES ##
+  - #
+    type: var
+    var_name: L:yoke_r_btn_trigger
+  - #
+    type: var
+    var_name: L:yoke_r_btn_hook
+  - #
+    type: var
+    var_name: L:yoke_r_btn_ctr
+  - #
+    type: var
+    var_name: L:yoke_r_btn_3
+  - #
+    type: var
+    var_name: L:yoke_r_pan_x
+
+#  - ## COLLECTIVE LEVER - PILOT SWITCHES ##
+  - #
+    type: var
+    var_name: L:coll_r_btn_trigger
+  - #
+    type: var
+    var_name: L:coll_r_btn_rpm_1
+  - #
+    type: var
+    var_name: L:coll_r_btn_rpm_12
+  - #
+    type: var
+    var_name: L:coll_r_pan_x
+  - #
+    type: var
+    var_name: L:coll_r_btn_slt_fil
+  - #
+    type: var
+    var_name: L:coll_r_btn_dim
+
+server:
+  -
+    type: var
+    var_name: A:FUEL TANK LEFT MAIN LEVEL
+    var_units: Percent
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:FUEL TANK RIGHT MAIN LEVEL
+    var_units: Percent
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:1
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:2
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:3
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:4
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:5
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:6
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:7
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:8
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:9
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:10
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
+  -
+    type: var
+    var_name: A:PAYLOAD STATION WEIGHT:11
+    var_units: Pounds
+    var_type: f64
+    unreliable: true
