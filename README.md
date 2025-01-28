@@ -1,5 +1,6 @@
 # YourControls_MILTECH_CH47D
 Profile to work with YourControls application and MSFS2020. If you find any bugs, please contact me on YourControls Discord: Dkgolfnut_Dennis
+# Made for MSFS2020 and not validated for 2024
 
 Known Issues:
 - Initial release 8/24/2024 no feedback yet
